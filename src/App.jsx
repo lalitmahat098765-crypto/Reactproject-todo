@@ -1,31 +1,43 @@
-import AppName from "./components/AppName"
-import TodoComponent from "./components/TodoComponent"
-import TodoItems from "./components/TodoItems"
-import "./App.css"
+import AppName from "./components/AppName";
+import TodoComponent from "./components/TodoComponent";
+import TodoItems from "./components/TodoItems";
+import WelcomeMessage from "./components/WelcomeMessage";
+import "./App.css";
+import { useState } from "react";
+import { TodoItemsContext } from "./store/store-todo-item";
 
-function App(){
-  const todoItems =[{
-    name:"Buy Milk",
-    date:"4/10/2023"},
-    {
-      name:"Go to College",
-      date:"4/10/2023"
-    },
-  {
-      name:"Like the Work",
-      date:"4/10/2023"
-    },
-  { 
-      name:"Good Work",
-      date:"4/10/2023"
-  }]
-  return(
+function App() {
+  const [todoItems, setTodoItems] = useState([]);
+
+  const addNewTodoItem = (todoName, todoDueDate) => {
+    const newTodoItem = (currValue) => [
+      ...currValue,
+      { name: todoName, date: todoDueDate },
+    ];
+    setTodoItems(newTodoItem);
+  };
+
+  const deleteTodoItem = (todoname) => {
+    const newTodoItems = todoItems.filter((item) => item.name !== todoname);
+    setTodoItems(newTodoItems);
+  };
+
+  return (
+    <TodoItemsContext.Provider
+      value={{
+        todoItems,
+        addNewTodoItem,
+        deleteTodoItem,
+      }}
+    >
       <center>
         <AppName />
         <TodoComponent />
-        <TodoItems todoitems={todoItems} /> 
+        <WelcomeMessage />
+        <TodoItems />
       </center>
-  )
+    </TodoItemsContext.Provider>
+  );
 }
 
-export default App
+export default App;

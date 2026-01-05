@@ -5,9 +5,9 @@ import { TodoItemsContext } from "../store/store-todo-item";
 
 function TodoItems() {
   const { todoItems } = useContext(TodoItemsContext);
-  console.log(todoItems);
   return (
     <div className={styles.todoItems}>
+      {console.log(todoItems)}
       {todoItems.map((item) => (
         <TodoItem
           key={item.id}

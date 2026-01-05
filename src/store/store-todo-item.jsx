@@ -2,6 +2,6 @@ import { createContext } from "react";
 
 export const TodoItemsContext = createContext({
   todoItems: [],
-  addNewTodoItem: () => {},
-  deleteTodoItem: () => {},
+  addNewItem: () => {},
+  deleteItem: () => {},
 });

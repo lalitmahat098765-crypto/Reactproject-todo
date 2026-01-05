@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { TodoItemsContext } from "../store/store-todo-item";
 
 function TodoItem({ todoname, tododate, onDeleteClick }) {
-  const { deleteTodoItem } = useContext(TodoItemsContext);
+  const { deleteItem } = useContext(TodoItemsContext);
   return (
     <div className={`${styles.kgContainer} container`}>
       <div className="row">
@@ -13,7 +13,7 @@ function TodoItem({ todoname, tododate, onDeleteClick }) {
         <div className="col-2">
           <button
             className="btn btn-danger kg-button"
-            onClick={() => deleteTodoItem(todoname)}
+            onClick={() => deleteItem(todoname)}
           >
             <MdDelete />
           </button>

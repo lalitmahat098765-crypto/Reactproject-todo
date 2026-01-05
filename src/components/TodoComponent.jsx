@@ -6,16 +6,16 @@ import { BiMessageAdd } from "react-icons/bi";
 function TodoComponent() {
   const todoNameElement = useRef();
   const dueDateElement = useRef();
-  const { addNewTodoItem } = useContext(TodoItemsContext);
+  const { addNewItem } = useContext(TodoItemsContext);
 
   const handleButtonChange = (event) => {
     event.preventDefault();
-    const todoName = todoNameElement.current.value;
-    const todoDueDate = dueDateElement.current.value;
+    const newItem = todoNameElement.current.value;
+    const newDueDate = dueDateElement.current.value;
     todoNameElement.current.value = "";
     dueDateElement.current.value = "";
 
-    addNewTodoItem(todoName, todoDueDate);
+    addNewItem(newItem, newDueDate);
   };
 
   return (
